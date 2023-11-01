@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <title></title>
+    <style>
+        .container{
+            background-color: lightgrey;
+            margin: auto;
+            display: flex;
+            height: 100vh;
+        }
+        table{
+            width: 400px;
+            height: 45vh;
+            align-items: center;
+            margin: auto;
+            display: flex;
+            background-color: lightblue;
+            border-radius: 10px;
+            flex-direction: column;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('first_name').value;
+            var lastName = document.getElementById('last_name').value;
+            var dob = document.getElementById('dob').value;
+            var country = document.getElementById('country').value;
+            var gender = document.querySelectorAll('input[name="gender"]:checked');
+            var profession = document.getElementById('profession').value;
+            var email = document.getElementById('email').value;
+            var mobile = document.getElementById('mobile').value;
+
+            if (firstName === '' || lastName === '' || dob === '' || country === '' || gender.length === 0 || profession === '' || email === '' || mobile === '') {
+                alert('Please fill in all the required fields.');
+                return false;
+            }
+
+            var message = 'First Name: ' + firstName + '\n';
+            message += 'Last Name: ' + lastName + '\n';
+            message += 'Date of Birth: ' + dob + '\n';
+            message += 'Country: ' + country + '\n';
+            message += 'Gender: ' + gender[0].value + '\n';
+            message += 'Profession: ' + profession + '\n';
+            message += 'Email: ' + email + '\n';
+            message += 'Mobile Number: ' + mobile;
+
+            alert(message);
+
+            document.getElementById('surveyForm').reset();
+
+            return false;
+        }
+
+        function resetForm() {
+            document.getElementById('surveyForm').reset();
+        }
+    </script>
+</head>
+<body>
+    <form class="container" id="surveyForm">
+            <table class="center"><tr>
+               <td> <h2 align="right">Survey </h2></td>
+              <td>  <h2 align="left">Form</td></tr>
+        <tr><td><label for="first_name">First Name:</label></td>
+        <td><input type="text" id="first_name" name="first_name" required></td></tr>
+
+        <tr><td><label for="last_name">Last Name:</label></td>
+        <td><input type="text" id="last_name" name="last_name" required></td></tr>
+
+        <tr><td> <label for="dob">Date of Birth:</label></td>
+        <td><input type="date" id="dob" name="dob" required></td></tr>
+
+        <tr><td> <label for="country">Country:</label></td>
+        <td><select id="country" name="country" required>
+            <option value="">Select Country</option>
+            <option value="India">India</option>
+             <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <!-- Add more countries as needed -->
+        </select></td></tr>
+
+        <tr><td> <label>Gender:</label></td>
+        <td><input type="checkbox" id="male" name="gender" value="Male"> Male
+        <input type="checkbox" id="female" name="gender" value="Female"> Female
+        <input type="checkbox" id="other" name="gender" value="Other"> Other
+        </td></tr>
+
+        <tr><td> <label for="profession">Profession:</label></td>
+        <td><input type="text" id="profession" name="profession" required></td></tr>
+
+         <tr><td><label for="email">Email:</label></td>
+        <td><input type="email" id="email" name="email" required></td></tr>
+
+         <tr><td><label for="mobile">Mobile Number:</label></td>
+        <td><input type="tel" id="mobile" name="mobile" required></td></tr>
+
+        <tr><td> <button type="button" onclick="validateForm()">Submit</button>
+          <td><button type="button" onclick="resetForm()">Reset</button></td></tr></table>
+    </form>
+</body>
+</html>
